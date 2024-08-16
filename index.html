@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oce4nic Softwares</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a, #001f3f, #007bff);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .info-section {
+            max-width: 400px;
+        }
+
+        .info-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .info-description {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(90deg, #0056b3, #007bff);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 10px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.75);
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(90deg, #004080, #0066cc);
+            text-decoration: none;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 1);
+        }
+
+        .form-section {
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+        }
+
+        .form-control {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            border-radius: 50px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-control::placeholder {
+            color: #bbb;
+        }
+
+        .form-text {
+            text-align: right;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #0056b3, #007bff);
+            border: none;
+            border-radius: 50px;
+            padding: 15px;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.75);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #004080, #0066cc);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-section">
+            <h1 class="info-title">The foremost scripting utility.</h1>
+            <p class="info-description">
+                At Oce4nic Softwares, we specialize in creating advanced software for mobile platforms.
+            </p>
+            <a href="#" class="btn-custom">Download Now</a>
+            <a href="#" class="btn-custom">Join Discord</a>
+        </div>
+        <div class="form-section">
+            <form>
+                <input type="email" class="form-control" placeholder="Email">
+                <input type="password" class="form-control" placeholder="Password">
+                <div class="form-text"><a href="#" class="text-light">Recover Password?</a></div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/@floating-ui/dom@latest"></script>
+    <script>
+        // Example of using Floating UI for a floating tooltip or popover
+        const buttons = document.querySelectorAll('.btn-custom');
+        buttons.forEach(button => {
+            const tooltip = document.createElement('div');
+            tooltip.innerText = 'Click here!';
+            tooltip.style.background = '#007bff';
+            tooltip.style.color = '#fff';
+            tooltip.style.padding = '10px';
+            tooltip.style.borderRadius = '5px';
+            tooltip.style.position = 'absolute';
+            tooltip.style.display = 'none';
+            tooltip.style.zIndex = '1000';
+
+            document.body.appendChild(tooltip);
+
+            button.addEventListener('mouseenter', () => {
+                tooltip.style.display = 'block';
+                FloatingUIDOM.computePosition(button, tooltip, {
+                    placement: 'top',
+                    middleware: [FloatingUIDOM.offset(10)],
+                }).then(({ x, y }) => {
+                    Object.assign(tooltip.style, {
+                        left: `${x}px`,
+                        top: `${y}px`,
+                    });
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
